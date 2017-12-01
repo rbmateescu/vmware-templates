@@ -58,7 +58,7 @@
     {
       "name": "ipv4_address",
       "description": "IPv4 address for vNIC configuration",
-      "default":"9.37.194.171",
+      "default":"9.37.194.182",
       "type": "string",
       "required": true,
       "secured": false,

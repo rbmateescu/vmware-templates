@@ -23,17 +23,6 @@
       "immutable": false
     },
     {
-      "name": "create_vm_folder",
-      "description": "A vSphere folder need to be create or it is precreated",
-      "default": "1",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "create_vm_folder",
-      "hidden": false,
-      "immutable": false
-    },
-    {
       "name": "datacenter",
       "description": "Target vSphere datacenter for Virtual Machine creation",
       "default": "Rack-8283_1000167",
@@ -41,17 +30,6 @@
       "required": true,
       "secured": false,
       "label": "datacenter",
-      "hidden": false,
-      "immutable": false
-    },
-    {
-      "name": "folder",
-      "description": "Target vSphere folder for Virtual Machine",
-      "default": "Radu",
-      "type": "string",
-      "required": true,
-      "secured": false,
-      "label": "folder",
       "hidden": false,
       "immutable": false
     },

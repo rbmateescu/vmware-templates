@@ -47,7 +47,7 @@
     {
       "name": "folder",
       "description": "Target vSphere folder for Virtual Machine",
-      "default": "RaduTest",
+      "default": "Radu",
       "type": "string",
       "required": true,
       "secured": false,
@@ -101,7 +101,7 @@
     },
     {
       "name": "name",
-      "default": "raduvmware",
+      "default": "demovmware",
       "description": "Name of the Virtual Machine",
       "type": "string",
       "required": true,
@@ -165,16 +165,6 @@
       "label": "IPV4 address",
       "hidden": false,
       "immutable": false
-    },
-    {
-      "name": "disk_uuid",
-      "description": "Disk UUID",
-      "type": "string",
-      "required": false,
-      "secured": false,
-      "label": "Disk UUID",
-      "hidden": false,
-      "immutable": false
-    }    
+    }
   ]
 }

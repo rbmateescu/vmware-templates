@@ -4,10 +4,6 @@ variable "name" {
 	description = "Name of the Virtual Machine"
 }
 
-variable "folder" {
-	description = "Target vSphere folder for Virtual Machine"
-}
-
 variable "datacenter" {
 	description = "Target vSphere datacenter for Virtual Machine creation"
 }
@@ -70,7 +66,6 @@ data "vsphere_datacenter" "datacenter" {
 # Create VM with single vnic on a network label by cloning 
 #
 resource "vsphere_virtual_machine" "vm_1" {
- # depends_on = ["vsphere_folder.folder_vm_1"]
   name   = "${var.name}"
   datacenter = "${var.datacenter}" 
   vcpu   = "${var.vcpu}"

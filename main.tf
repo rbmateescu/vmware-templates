@@ -90,7 +90,7 @@ resource "vsphere_virtual_machine" "vm_1" {
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
   
-  vcpu   = "${var.vcpu}"
+  num_cpus   = "${var.vcpu}"
   memory = "${var.memory}"
   
   network_interface {

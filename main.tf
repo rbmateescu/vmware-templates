@@ -93,7 +93,7 @@ resource "vsphere_virtual_machine" "vm_1" {
   num_cpus   = "${var.vcpu}"
   memory = "${var.memory}"
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
-  
+
   network_interface {
       network_id = "${data.vsphere_network.network.id}"
   }
@@ -124,4 +124,7 @@ resource "vsphere_virtual_machine" "vm_1" {
 
 output "ipv4_address" {
   value = "${vsphere_virtual_machine.vm_1.network_interface.0.ipv4_address}"
+}
+output "disk_uuid" {
+  value = "${vsphere_virtual_machine.vm_1.disk.0.uuid}"
 }

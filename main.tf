@@ -102,7 +102,7 @@ resource "vsphere_virtual_machine" "vm_1" {
 
   disk {
     name = "${var.name}.vmdk"
-    size = "${data.vsphere_virtual_machine.example_template.disks.0.size}"
+    size = "${data.vsphere_virtual_machine.template.disks.0.size}"
   }
 }
 

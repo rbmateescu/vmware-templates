@@ -61,6 +61,25 @@ data "vsphere_datacenter" "datacenter" {
   name = "${var.datacenter}"
 }
 
+data "vsphere_virtual_machine" "template" {
+  name          = "${var.vm_template}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_datastore" "datastore" {
+  name          = "${var.storage}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_resource_pool" "pool" {
+  name          = "${var.cluster}/Resources"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_network" "network" {
+  name          = "840"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
 ################## Resources ###############################
 
 #
@@ -68,19 +87,22 @@ data "vsphere_datacenter" "datacenter" {
 #
 resource "vsphere_virtual_machine" "vm_1" {
   name   = "${var.name}"
-  datacenter = "${var.datacenter}" 
+  resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
+  datastore_id     = "${data.vsphere_datastore.datastore.id}"
+  
   vcpu   = "${var.vcpu}"
   memory = "${var.memory}"
-  cluster = "${var.cluster}"
+  
   network_interface {
-      label = "${var.network_label}"
+      network_id = "${data.vsphere_network.network.id}"
       ipv4_gateway = "${var.ipv4_gateway}"
       ipv4_address = "${var.ipv4_address}"
       ipv4_prefix_length = "${var.ipv4_prefix_length}"
   }
+
   disk {
-    datastore = "${var.storage}"
-    template = "${var.vm_template}"
+    name = "${var.name}.vmdk"
+    size = "${data.vsphere_virtual_machine.example_template.disks.0.size}"
   }
 }
 

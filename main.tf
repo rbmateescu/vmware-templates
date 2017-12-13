@@ -53,7 +53,7 @@ variable "allow_selfsigned_cert" {
 
 ############### Optinal settings in provider ##########
 provider "vsphere" {
-    version = "~> 1.0"
+    version = "~> 1.1"
     allow_unverified_ssl = "${var.allow_selfsigned_cert}"
 }
  
@@ -95,14 +95,29 @@ resource "vsphere_virtual_machine" "vm_1" {
   
   network_interface {
       network_id = "${data.vsphere_network.network.id}"
-      ipv4_gateway = "${var.ipv4_gateway}"
-      ipv4_address = "${var.ipv4_address}"
-      ipv4_prefix_length = "${var.ipv4_prefix_length}"
   }
 
   disk {
     name = "${var.name}.vmdk"
     size = "${data.vsphere_virtual_machine.template.disks.0.size}"
+  }
+
+  clone {
+    template_uuid = "${data.vsphere_virtual_machine.template.id}"
+
+    customize {
+      linux_options {
+        host_name = "${var.name}"
+        domain    = "test.internal"
+      }
+
+      network_interface {
+        ipv4_address = "${var.ipv4_address}"
+        ipv4_netmask = "${var.ipv4_prefix_length}"
+      }
+
+      ipv4_gateway = "${var.ipv4_gateway}"
+    }
   }
 }
 

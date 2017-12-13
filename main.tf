@@ -125,6 +125,6 @@ resource "vsphere_virtual_machine" "vm_1" {
 output "ipv4_address" {
   value = "${vsphere_virtual_machine.vm_1.network_interface.0.ipv4_address}"
 }
-output "disk_uuid" {
-  value = "${vsphere_virtual_machine.vm_1.disk.0.uuid}"
+output "disk_name" {
+  value = "${vsphere_virtual_machine.vm_1.disk.name}"
 }

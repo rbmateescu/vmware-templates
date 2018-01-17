@@ -102,7 +102,7 @@
     {
       "name": "storage",
       "description": "Data store or storage cluster name for target VMs disks",
-      "default": "cache_2TB-1",
+      "default": "p_598752a3-396b-4c9e-868d-1cd090350d83",
       "type": "string",
       "required": true,
       "secured": false,

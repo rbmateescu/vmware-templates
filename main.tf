@@ -49,7 +49,7 @@ variable "vm_template" {
 variable "somelist" {
 	description = "list param"
   type = "list"
-  default = [[],["us-east-1a"],["us-east-1a", "us-east-1b"]
+  default = [[],["us-east-1a"],["us-east-1a", "us-east-1b"]]
 }
 
 

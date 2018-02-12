@@ -46,6 +46,13 @@ variable "vm_template" {
 	description = "Source VM or Template label for cloning"
 }
 
+variable "somelist" {
+	description = "list param"
+  type = "list"
+  default = ["us-east-1a", "us-east-1b"]
+}
+
+
 variable "allow_selfsigned_cert" {
     description = "Communication with vsphere server with self signed certificate"
     default = true

@@ -53,7 +53,7 @@ variable "allow_selfsigned_cert" {
 
 ############### Optinal settings in provider ##########
 provider "vsphere" {
-    version = "~> 1.0"
+    version = "0.4.2"
     allow_unverified_ssl = "${var.allow_selfsigned_cert}"
 }
  

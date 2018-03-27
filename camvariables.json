@@ -58,7 +58,7 @@
       {
         "name": "dns_sufixes",
         "description": "DNS sufixes",
-        "default":"9.37.194.1",
+        "default":["test1.domain","test2.domain"],
         "type": "list",
         "required": false,
         "secured": false,

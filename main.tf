@@ -34,9 +34,9 @@ variable "ipv4_gateway" {
 	description = "IPv4 gateway for vNIC configuration"
 }
 
-variable "dns_sufixes" {
+variable "dns_suffixes" {
   type = "list"
-	description = "DNS Sufixes"
+	description = "DNS Suffixes"
 }
 
 variable "ipv4_prefix_length" {

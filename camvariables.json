@@ -56,13 +56,13 @@
         "immutable": false
       },
       {
-        "name": "dns_sufixes",
+        "name": "dns_suffixes",
         "description": "DNS sufixes",
         "default":["test1.domain","test2.domain"],
         "type": "list",
         "required": false,
         "secured": false,
-        "label": "dns_sufixes",
+        "label": "dns_suffixes",
         "hidden": false,
         "immutable": false
       },      

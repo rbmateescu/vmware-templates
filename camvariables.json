@@ -56,6 +56,17 @@
         "immutable": false
       },
       {
+        "name": "dns_sufixes",
+        "description": "DNS sufixes",
+        "default":"9.37.194.1",
+        "type": "list",
+        "required": false,
+        "secured": false,
+        "label": "dns_sufixes",
+        "hidden": false,
+        "immutable": false
+      },      
+      {
         "name": "ipv4_prefix_length",
         "description": "IPv4 Prefix length for vNIC configuration",
         "default":"24",

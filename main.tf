@@ -34,6 +34,11 @@ variable "ipv4_gateway" {
 	description = "IPv4 gateway for vNIC configuration"
 }
 
+variable "dns_sufixes" {
+  type = "list"
+	description = "DNS Sufixes"
+}
+
 variable "ipv4_prefix_length" {
 	description = "IPv4 Prefix length for vNIC configuration"
 }
@@ -127,6 +132,7 @@ resource "vsphere_virtual_machine" "vm_1" {
       }
 
       ipv4_gateway = "${var.ipv4_gateway}"
+      dns_suffix_list = "${var.dns_suffixes}"
     }
   }
 }

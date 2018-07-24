@@ -39,6 +39,11 @@ variable "dns_suffixes" {
 	description = "DNS Suffixes"
 }
 
+variable "dns_server_list" {
+  type = "list"
+	description = "DNS Servers"
+}
+
 variable "ipv4_prefix_length" {
 	description = "IPv4 Prefix length for vNIC configuration"
 }
@@ -123,6 +128,7 @@ resource "vsphere_virtual_machine" "vm_1" {
       network_interface {
         ipv4_address = "${var.ipv4_address}"
         ipv4_netmask = "${var.ipv4_prefix_length}"
+        dns_server_list = "${var.dns_server_list}"
       }
 
       ipv4_gateway = "${var.ipv4_gateway}"

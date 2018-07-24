@@ -58,7 +58,7 @@
       {
         "name": "dns_suffixes",
         "description": "DNS sufixes",
-        "default":["test1.domain","test2.domain"],
+        "default":["rtp.raleigh.ibm.com"],
         "type": "list",
         "required": false,
         "secured": false,
@@ -66,6 +66,17 @@
         "hidden": false,
         "immutable": false
       },      
+      {
+        "name": "dns_server_list",
+        "description": "DNS server list",
+        "default":["9.42.106.2", "9.42.106.3"],
+        "type": "list",
+        "required": false,
+        "secured": false,
+        "label": "dns_server_list",
+        "hidden": false,
+        "immutable": false
+      },
       {
         "name": "ipv4_prefix_length",
         "description": "IPv4 Prefix length for vNIC configuration",

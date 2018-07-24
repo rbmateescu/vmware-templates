@@ -128,11 +128,11 @@ resource "vsphere_virtual_machine" "vm_1" {
       network_interface {
         ipv4_address = "${var.ipv4_address}"
         ipv4_netmask = "${var.ipv4_prefix_length}"
-        dns_server_list = "${var.dns_server_list}"
       }
 
       ipv4_gateway = "${var.ipv4_gateway}"
       dns_suffix_list = "${var.dns_suffixes}"
+      dns_server_list = "${var.dns_server_list}"
     }
   }
 }

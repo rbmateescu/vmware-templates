@@ -14,7 +14,7 @@
     }
   },
   "metadata": {
-      "displayName": "Single Virtual Machine",
+      "displayName": "1 VM - Single Virtual Machine",
       "longDescription": "Create Virtual Machine with single vnic on a network label by cloning"
   }
 }

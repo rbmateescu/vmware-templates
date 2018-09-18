@@ -34,6 +34,16 @@ variable "ipv4_gateway" {
 	description = "IPv4 gateway for vNIC configuration"
 }
 
+variable "dns_suffixes" {
+  type = "list"
+	description = "DNS Suffixes"
+}
+
+variable "dns_server_list" {
+  type = "list"
+	description = "DNS Servers"
+}
+
 variable "ipv4_prefix_length" {
 	description = "IPv4 Prefix length for vNIC configuration"
 }
@@ -53,7 +63,7 @@ variable "allow_selfsigned_cert" {
 
 ############### Optinal settings in provider ##########
 provider "vsphere" {
-    version = "~> 1.0"
+    version = "~> 1.1"
     allow_unverified_ssl = "${var.allow_selfsigned_cert}"
 }
  
@@ -61,6 +71,25 @@ data "vsphere_datacenter" "datacenter" {
   name = "${var.datacenter}"
 }
 
+data "vsphere_virtual_machine" "template" {
+  name          = "${var.vm_template}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_datastore" "datastore" {
+  name          = "${var.storage}"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_resource_pool" "pool" {
+  name          = "${var.cluster}/Resources"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
+
+data "vsphere_network" "network" {
+  name          = "840"
+  datacenter_id = "${data.vsphere_datacenter.datacenter.id}"
+}
 ################## Resources ###############################
 
 #
@@ -68,22 +97,42 @@ data "vsphere_datacenter" "datacenter" {
 #
 resource "vsphere_virtual_machine" "vm_1" {
   name   = "${var.name}"
-  datacenter = "${var.datacenter}" 
-  vcpu   = "${var.vcpu}"
+  resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
+  datastore_id     = "${data.vsphere_datastore.datastore.id}"
+  
+  num_cpus   = "${var.vcpu}"
   memory = "${var.memory}"
-  cluster = "${var.cluster}"
-  network_interface {
-      label = "${var.network_label}"
-      ipv4_gateway = "${var.ipv4_gateway}"
-      ipv4_address = "${var.ipv4_address}"
-      ipv4_prefix_length = "${var.ipv4_prefix_length}"
-  }
-  disk {
-    datastore = "${var.storage}"
-    template = "${var.vm_template}"
-  }
-}
+  guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
+  #scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
 
-output "ipv4_address" {
-  value = "${vsphere_virtual_machine.vm_1.network_interface.0.ipv4_address}"
+  network_interface {
+      network_id = "${data.vsphere_network.network.id}"
+  }
+
+  disk {
+    name = "${var.name}.vmdk"
+    size = "${data.vsphere_virtual_machine.template.disks.0.size}"
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.0.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
+  }
+
+  clone {
+    template_uuid = "${data.vsphere_virtual_machine.template.id}"
+
+    customize {
+      linux_options {
+        host_name = "${var.name}"
+        domain    = "test.internal"
+      }
+
+      network_interface {
+        ipv4_address = "${var.ipv4_address}"
+        ipv4_netmask = "${var.ipv4_prefix_length}"
+      }
+
+      ipv4_gateway = "${var.ipv4_gateway}"
+      dns_suffix_list = "${var.dns_suffixes}"
+      dns_server_list = "${var.dns_server_list}"
+    }
+  }
 }

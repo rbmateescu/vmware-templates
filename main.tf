@@ -1,5 +1,11 @@
 ##################### Variables ###############################
 
+variable "ibm_stack_name" {
+	description = "Name of the Virtual Machine"
+}
+variable "ibm_stack_id" {
+	description = "Name of the Virtual Machine"
+}
 variable "name" {
 	description = "Name of the Virtual Machine"
 }

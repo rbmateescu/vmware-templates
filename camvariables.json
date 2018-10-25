@@ -1,28 +1,6 @@
 {
     "template_input_params": [
       {
-        "name": "ibm_stack_name",
-        "description": "Target vSphere Cluster to host the Virtual Machine",
-        "default": "Shared",
-        "type": "string",
-        "required": false,
-        "secured": false,
-        "label": "cluster",
-        "hidden": false,
-        "immutable": false
-      },
-      {
-        "name": "ibm_stack_id",
-        "description": "Target vSphere Cluster to host the Virtual Machine",
-        "default": "Shared",
-        "type": "string",
-        "required": false,
-        "secured": false,
-        "label": "cluster",
-        "hidden": false,
-        "immutable": false
-      },
-      {
         "name": "allow_selfsigned_cert",
         "description": "Communication with vsphere server with self signed certificate",
         "default": "true",

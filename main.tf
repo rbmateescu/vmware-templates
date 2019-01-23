@@ -142,3 +142,7 @@ resource "vsphere_virtual_machine" "vm_1" {
     }
   }
 }
+
+output "ipv4_address" {
+  value = "${vsphere_virtual_machine.vm_1.clone.0.customize.0.network_interface.0.ipv4_address}"
+}

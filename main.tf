@@ -125,26 +125,31 @@ resource "vsphere_virtual_machine" "vm_1" {
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
 
-    customize {
+    #customize {
       #linux_options {
         #host_name = "${var.name}"
         #domain    = "test.internal"
       #}
 
-      network_interface {
-        ipv4_address = "${var.ipv4_address}"
-        ipv4_netmask = "${var.ipv4_prefix_length}"
-      }
+      #network_interface {
+      #  ipv4_address = "${var.ipv4_address}"
+      #  ipv4_netmask = "${var.ipv4_prefix_length}"
+      #}
 
-      ipv4_gateway = "${var.ipv4_gateway}"
-      dns_suffix_list = "${var.dns_suffixes}"
-      dns_server_list = "${var.dns_server_list}"
-    }
+      #ipv4_gateway = "${var.ipv4_gateway}"
+      #dns_suffix_list = "${var.dns_suffixes}"
+      #dns_server_list = "${var.dns_server_list}"
+    #}
 
   }
   vapp {
     properties {
       "guestinfo.hostname" = "${var.name}"
+      "guestinfo.interface.0.name"                = "ens192"
+      "guestinfo.interface.0.ip.0.address"        = "${var.ipv4_address}/${var.ipv4_prefix_length}"
+      "guestinfo.interface.0.route.0.gateway"     = "${var.ipv4_gateway}"
+      "guestinfo.interface.0.route.0.destination" = "0.0.0.0/0"
+      "guestinfo.dns.server.0"                    = "${var.dns_server_list[0]}"
     }
   }
 }

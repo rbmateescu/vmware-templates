@@ -144,7 +144,7 @@ resource "vsphere_virtual_machine" "vm_1" {
   }
   vapp {
     properties {
-      "guestinfo.hostname"                        = "gsic"
+      "guestinfo.hostname"                        = "${var.name}"
     }
   }
 }

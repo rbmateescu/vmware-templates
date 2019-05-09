@@ -127,7 +127,7 @@ resource "vsphere_virtual_machine" "vm_1" {
 
     customize {
       linux_options {
-        host_name = "${var.name}"
+        #host_name = "${var.name}"
         domain    = "test.internal"
       }
 
@@ -139,6 +139,12 @@ resource "vsphere_virtual_machine" "vm_1" {
       ipv4_gateway = "${var.ipv4_gateway}"
       dns_suffix_list = "${var.dns_suffixes}"
       dns_server_list = "${var.dns_server_list}"
+    }
+
+  }
+  vapp {
+    properties {
+      "guestinfo.hostname"                        = "gsic"
     }
   }
 }

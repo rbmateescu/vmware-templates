@@ -126,10 +126,10 @@ resource "vsphere_virtual_machine" "vm_1" {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
 
     customize {
-      linux_options {
+      #linux_options {
         #host_name = "${var.name}"
-        domain    = "test.internal"
-      }
+        #domain    = "test.internal"
+      #}
 
       network_interface {
         ipv4_address = "${var.ipv4_address}"

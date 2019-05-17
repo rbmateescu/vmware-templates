@@ -1,0 +1,27 @@
+{
+    "template_input_params": [
+      {
+        "name": "allow_selfsigned_cert",
+        "description": "Communication with vsphere server with self signed certificate",
+        "default": "true",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "label": "allow_selfsigned_cert",
+        "hidden": false,
+        "immutable": false
+      },
+      {
+        "name": "datacenter",
+        "description": "Target vSphere datacenter for Virtual Machine creation",
+        "default": "Rack-8283_1000167",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "label": "datacenter",
+        "hidden": false,
+        "immutable": false
+      }
+    ]
+  }
+  

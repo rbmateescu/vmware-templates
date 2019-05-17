@@ -1,0 +1,46 @@
+{
+    "input_datatypes": [],
+    "output_datatype": "content_template_output",
+    "input_groups": [
+      {
+        "name": "vm_var",
+        "label": "Variables for VM and OS"
+      },
+      {
+        "name": "mw_var",
+        "label": "Variables for MW"
+      }
+    ],
+    "output_groups": [
+      {
+        "name": "content_template_output",
+        "label": "Outputs"
+      }
+    ],
+    "template_input_params": [
+      {
+        "name":  "vm_name",
+        "type": "string",
+        "description": "ホスト名: 命名規則に従って下さい",
+        "hidden": false,
+        "label": "ホスト名",
+        "secured": false,
+        "required": true,
+        "immutable": false,
+        "immutable_after_create": true,
+        "group_name": "vm_var"
+      }
+    ],
+    "template_output_params": [
+      {
+        "name": "vm_name",
+        "description": "Hostname",
+        "label": "Hostname",
+        "type": "string",
+        "hidden": false,
+        "secured": false,
+        "group_name": "content_template_output"
+      }
+    ]
+  }
+  

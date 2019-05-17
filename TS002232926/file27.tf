@@ -1,14 +1,5 @@
 ##################### Variables ###############################
 
-variable "datacenter" {
-	description = "Target vSphere datacenter for Virtual Machine creation"
-}
-
-variable "allow_selfsigned_cert" {
-    description = "Communication with vsphere server with self signed certificate"
-    default = true
-}
-
 ############### Optinal settings in provider ##########
 provider "vsphere" {
     #version = "~> 1.9"

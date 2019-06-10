@@ -1,5 +1,5 @@
 {
-  "name": "Sandbox - Single Virtual Machine",
+  "name": "CC Params",
   "description": "Create Virtual Machine with single vnic",
   "type": "prebuilt",
   "version": "1.0.0.0",
@@ -14,7 +14,7 @@
     }
   },
   "metadata": {
-      "displayName": "Sandbox - Single Virtual Machine",
+      "displayName": "CC Params",
       "longDescription": "Create Virtual Machine with single vnic on a network label by cloning"
   }
 }

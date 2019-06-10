@@ -5,7 +5,7 @@ provider "vsphere" {
     allow_unverified_ssl = "true"
 }
 
-resource "null-resource" "test" {
+resource "null_resource" "test" {
   provisioner "local-exec" {
     command = "echo \">>>>>>> \" &&  echo $VSPHERE_USER && echo \" >>>>>>>\"" 
   }

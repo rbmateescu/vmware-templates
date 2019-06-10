@@ -7,6 +7,6 @@ provider "vsphere" {
 
 resource "null_resource" "test" {
   provisioner "local-exec" {
-    command = "echo \">>>>>>> \" &&  echo $VSPHERE_PASSWORD && echo \" >>>>>>>\"" 
+    command = "echo \">>>>>>> \" &&  export && echo \" >>>>>>>\"" 
   }
 }

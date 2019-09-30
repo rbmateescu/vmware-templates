@@ -3,5 +3,5 @@ output "create_output" {
 }
 
 output "delete_output" {
-	value = "${camc_scriptpackage.delete_test.result}"
+	value = "${camc_scriptpackage.delete_test.stdout}"
 }

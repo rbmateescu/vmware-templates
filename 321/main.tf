@@ -18,7 +18,7 @@ variable "ibm_pm_service" {
   description = "IBM Pattern Manager Service"
 }
 
-rresource "null_resource" "echotest" {
+resource "null_resource" "echotest" {
   provisioner "local-exec" {
     command = "echo \"stack ID: ${var.ibm_stack_id}\""
   }

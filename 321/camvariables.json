@@ -6,17 +6,7 @@
     }
   ],
   "template_input_params": [
-    {
-      "name": "ibm_stack_id",
-      "type": "string",
-      "description": "A unique stack id.",
-      "hidden": true,
-      "label": "A unique stack id.",
-      "secured": false,
-      "required": true,
-      "immutable": false,
-      "group_name": "environment"
-    },
+    
     {
       "name": "allow_unverified_ssl",
       "type": "string",

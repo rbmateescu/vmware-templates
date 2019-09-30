@@ -18,6 +18,11 @@ variable "ibm_pm_service" {
   description = "IBM Pattern Manager Service"
 }
 
+rresource "null_resource" "echotest" {
+  provisioner "local-exec" {
+    command = "echo \"stack ID: ${var.ibm_stack_id}\""
+  }
+}
 resource "camc_vaultitem" "VaultItem" {
   camc_endpoint   = "${var.ibm_pm_service}/v1/vault_item/chef"
   access_token    = "${var.ibm_pm_access_token}"

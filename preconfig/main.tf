@@ -14,8 +14,9 @@ resource "null_resource" "icp-boot-preconfig" {
   
   # The first master is always the boot master where we run provisioning jobs from
   connection {
-    host          = "169.62.203.38"
-    user          = "root"
+    host          = "10.73.26.220"
+    bastion_host  = "169.62.203.38"
+    user          = "icpdeploy"
     private_key   = "${base64decode(var.ssh_key)}"
   }
 

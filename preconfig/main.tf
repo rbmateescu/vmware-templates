@@ -10,19 +10,8 @@ variable "hooks" {
       ]}
 }
 
-resource "null_resource" "icp-boot-preconfig" {
-  
-  # The first master is always the boot master where we run provisioning jobs from
-  connection {
-    host          = "10.73.26.220"
-    bastion_host  = "169.62.203.38"
-    user          = "icpdeploy"
-    private_key   = "${base64decode(var.ssh_key)}"
-  }
-
-  # Run stage hook commands
-  provisioner "remote-exec" {
-    inline = ["${var.hooks["boot-preconfig"]}"]
-  }
+module "icpprovision" {
+    source = "./modules"
+    ssh_key = "${var.ssh_key}"
+    hooks = "${var.hooks}"
 }
-

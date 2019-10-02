@@ -16,7 +16,7 @@ resource "null_resource" "icp-boot-preconfig" {
   connection {
     host          = "169.62.203.38"
     user          = "root"
-    private_key   = "${var.ssh_key}"
+    private_key   = "${base64decode(var.ssh_key)}"
   }
 
   # Run stage hook commands

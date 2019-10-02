@@ -6,7 +6,7 @@ variable "hooks" {
   description = "Hooks into different stages in the cluster setup process"
   type        = "map"
   default     = {"boot-preconfig" = [
-        "while [ ! -f /opt/ibm/.imageload_complete ]; do sleep 5; done"
+        "while [ -f /opt/ibm/.imageload_complete ]; do sleep 5; done"
       ]}
 }
 
